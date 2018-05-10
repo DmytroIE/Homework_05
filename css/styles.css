@@ -248,8 +248,7 @@ input[type="radio"].visually-hidden {
   height: 262px;
   top:10px;
   left:10px;
-  background-color: #323232;
-  opacity: 0.55;
+  background-color: /*#323232*/rgba(50,50,50, 0.55);
   font-size: 0;
   line-height: 0;
 }
@@ -270,7 +269,6 @@ input[type="radio"].visually-hidden {
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 8px;
-  opacity: 1; /*не помогает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -289,7 +287,6 @@ input[type="radio"].visually-hidden {
 
 .btn:hover{
   background-color: #1abc9c;
-  opacity: 1; /*тоже не помогает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 }
 
 .pe-7s-like,
