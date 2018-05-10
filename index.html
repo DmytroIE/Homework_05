@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Homework_05</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:300,400,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <!-- Optional - Adds useful class to manipulate icon font display -->
+    <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/helper.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        // http://gnatkovsky.com.ua/prostoj-slajder-s-knopkami-upravleniya-vpered-i-nazad.html
+            $(function() {
+                var sldr = $('.slides'),
+                sldrContent = sldr.html(),
+                slideWidth = $('.slider-content').outerWidth(),
+                slideCount = $('.slides li').length,
+                prv_b = $('.prev'),
+                nxt_b = $('.next'),
+                sldrInterval = 3300,
+                animateTime = 1000,
+                course = 1,
+                margin = - slideWidth;
+                $('.slides li:last').clone().prependTo('.slides');
+                $('.slides li').eq(1).clone().appendTo('.slides');
+                $('.slides').css('margin-left',-slideWidth);
+                function nxt_bSlide(){interval=window.setInterval(animate,sldrInterval)}
+                function animate(){
+                    if(margin==-slideCount*slideWidth-slideWidth){
+                        sldr.css({'marginLeft':-slideWidth});
+                        margin=-slideWidth*2;
+                        }
+                    else if(margin==0&&course==-1){
+                        sldr.css({'marginLeft':-slideWidth*slideCount});
+                        margin=-slideWidth*slideCount+slideWidth;
+                        }
+                    else{
+                        margin=margin-slideWidth*(course)
+                        }
+                    sldr.animate({'marginLeft':margin},animateTime);
+                    }
+                function sldrStop(){window.clearInterval(interval)}
+                prv_b.click(function(){
+                        if(sldr.is(':animated')){return false;}
+                        var course2=course;
+                        course=-1;
+                        animate();
+                        course=course2;
+                        });
+                nxt_b.click(function(){
+                        if(sldr.is(':animated')){return false;}
+                        var course2=course;
+                        course=1;animate();
+                        course=course2;
+                        });
+                sldr.add(nxt_b).add(prv_b).hover(function(){sldrStop()},nxt_bSlide);
+                nxt_bSlide()
+                });
+    </script>
+
+
+</head>
+<body>
+    <h1 class="visually-hidden">Mart Shop</h1>
+
+    <!--. WRAPPER .-->
+    <div class="wrapper">
+        <!--. HEADER .-->
+        <header class="page-header">
+            <div class="header-root-container">
+                <div class="header-root clearfix">
+                    <a href="#" class="site-logo-link">
+                        <img src="img/logo.png" alt="logo" width="78" height="21">
+                    </a>
+                    <nav class="page-nav">
+                        <ul class="page-nav-list clearfix">
+                            <li class="page-nav-list-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="page-nav-list-item">
+                                <a href="">About us</a>
+                            </li>
+                            <li class="page-nav-list-item">
+                                <a href="">Page</a>
+                            </li>
+                            <li class="page-nav-list-item">
+                                <a href="">Shop</a>
+                            </li>
+                            <li class="page-nav-list-item">
+                                <a href="">Blog</a>
+                            </li>
+                            <li class="page-nav-list-item">
+                                <a href="">Contact us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="header-slider">
+                <div class="slider-content">
+                    <ul class="slides clearfix">
+                        <li class="slide">
+                            <img src="img/banner.jpg" alt="banner" width="1600" height="602">
+                            <div class="slide-text">
+                                <h2 class="slide-title">Affordable Paris Tours</h2>
+                                <p class="slide-subtitle">City Tours / Tour Tickets / Tour Guides</p>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <img src="img/banner-left.jpg" alt="banner" width="1600" height="602">
+                            <div class="slide-text">
+                                <h2 class="slide-title">Incredible Tokio Tours</h2>
+                                <p class="slide-subtitle">City Tours / Tour Tickets / Tour Guides</p>
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <img src="img/banner-right.jpg" alt="banner" width="1600" height="602">
+                            <div class="slide-text">
+                                <h2 class="slide-title">Magic London Tours</h2>
+                                <p class="slide-subtitle">City Tours / Tour Tickets / Tour Guides</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slider-navi">
+                    <ul class="slider-buttons">
+                        <li class="slider-button prev">
+                            <!-- <a href="#" class="slider-button-link "></a> -->
+                            <span class="pe-7s-angle-left"></span>
+                        </li>
+                        <li class="slider-button next">
+                            <!-- <a href="#" class="slider-button-link "></a> -->
+                            <span class="pe-7s-angle-right"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!--. MAIN .-->
+        <main class="page-main">
+            <!--. SECTION NEW COLLECTION .-->
+            <section class="new-collection">
+                <h2 class="section-title">New collection</h2>
+                    <ul class="new-coll-list clearfix">
+                        <li class="new-coll-list-item">
+
+                            <img src="img/new-coll-1.jpg" alt="Blue Tshirt Photo" width="255" height="322">
+
+                            <div class="picture-curtain">
+                                <div class="btn-set">
+                                    <button class="btn like-btn">
+                                        <span class="pe-7s-like"></span>
+                                    </button>
+                                    <button class="btn mix-btn">
+                                        <span class="pe-7s-shuffle"></span>
+                                    </button>
+                                    <button class="btn time-btn">
+                                        <span class="pe-7s-clock"></span>
+                                    </button>
+                                    <button class="btn add-to-cart-btn">
+                                        <span class="pe-7s-cart"></span>
+                                        <span class="add-to-cart">Add To Cart</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <a href="#" class="new-coll-link clearfix">
+                                <h3>Blue Tshirt</h3>
+                                <p>26</p>
+                            </a>
+                        </li>
+                        <li class="new-coll-list-item">
+                            <img src="img/new-coll-2.jpg" alt="Yellow Tshirt Photo" width="255" height="322">
+
+                            <div class="picture-curtain">
+                                <div class="btn-set">
+                                    <button class="btn like-btn">
+                                        <span class="pe-7s-like"></span>
+                                    </button>
+                                    <button class="btn mix-btn">
+                                        <span class="pe-7s-shuffle"></span>
+                                    </button>
+                                    <button class="btn time-btn">
+                                        <span class="pe-7s-clock"></span>
+                                    </button>
+                                    <button class="btn add-to-cart-btn">
+                                        <span class="pe-7s-cart"></span>
+                                        <span class="add-to-cart">Add To Cart</span>
+                                    </button>
+                                </div>
+                            </div>                                
+
+                            <a href="#" class="new-coll-link clearfix">
+                                <h3>Woman Tshirt</h3>
+                                <p>31</p>
+                            </a>
+                        </li>
+                        <li class="new-coll-list-item">
+
+                            <img src="img/new-coll-3.jpg" alt="Yellow Tshirt Photo" width="255" height="322">
+
+                            <div class="picture-curtain">
+                                <div class="btn-set">
+                                    <button class="btn like-btn">
+                                        <span class="pe-7s-like"></span>
+                                    </button>
+                                    <button class="btn mix-btn">
+                                        <span class="pe-7s-shuffle"></span>
+                                    </button>
+                                    <button class="btn time-btn">
+                                        <span class="pe-7s-clock"></span>
+                                    </button>
+                                    <button class="btn add-to-cart-btn">
+                                        <span class="pe-7s-cart"></span>
+                                        <span class="add-to-cart">Add To Cart</span>
+                                    </button>
+                                </div>
+                            </div>    
+
+                            <a href="#" class="new-coll-link clearfix">
+                                <h3>Yellow Tshirt</h3>
+                                <p>21</p>
+                            </a>
+                        </li>
+                        <li class="new-coll-list-item">
+
+                            <img src="img/new-coll-4.jpg" alt="Cool Lingerie Photo" width="255" height="322">
+
+                            <div class="picture-curtain">
+                                <div class="btn-set">
+                                    <button class="btn like-btn">
+                                        <span class="pe-7s-like"></span>
+                                    </button>
+                                    <button class="btn mix-btn">
+                                        <span class="pe-7s-shuffle"></span>
+                                    </button>
+                                    <button class="btn time-btn">
+                                        <span class="pe-7s-clock"></span>
+                                    </button>
+                                    <button class="btn add-to-cart-btn">
+                                        <span class="pe-7s-cart"></span>
+                                        <span class="add-to-cart">Add To Cart</span>
+                                    </button>
+                                </div>
+                            </div>    
+
+                            <a href="#" class="new-coll-link clearfix">
+                                <h3>Cool Lingerie</h3>
+                                <p>56</p>
+                            </a>
+                        </li>
+                    </ul>
+            </section>
+        </main>
+        <footer class="page-footer">
+            <div class="footer-container">
+                <div class="footer-info">All Rights Reserved © Dokan | Designed <a href="#">ThemenGraph</a></div>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
